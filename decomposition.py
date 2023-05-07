@@ -1,5 +1,3 @@
-
-
 def createTriangleSignal(samples: int, frequency: int, k_max: int):
     # returns the signal as 1D-array (np.ndarray)
     # TODO
