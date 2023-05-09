@@ -1,9 +1,21 @@
+import math
 import numpy as np
+
 
 # returns the chirp signal as list or 1D-array
 def createChirpSignal(samplingrate: int, duration: int, freqfrom: int, freqto: int, linear: bool):
-    # Create
-    time = np.linspace(0, duration, int(samplingrate * duration))
-    print(time)
+    # Create measurement time points over the entire duration
+    t = np.linspace(0, duration, int(samplingrate * duration))  # Measurement points
 
-createChirpSignal(10, 20, 2, 2, True)
+    # Determine phase/phase angle (describes the oscillation phase of the oscillation)
+    if linear:
+        # Calculate linear chirp rate and apply given formula
+        c = (freqto - freqfrom) / duration  # Linear chirp rate
+        phase = 2 * np.pi * (freqfrom + 0.5 * c * t) * t
+    else:
+        # Calculate exponential chirp rate and apply given formula
+        k = np.log(freqto / freqfrom) / duration
+        phase = 2 * np.pi * freqfrom / np.log(k) * (np.exp(k * t) - 1)
+
+    # Return chirp signal
+    return np.sin(phase)
