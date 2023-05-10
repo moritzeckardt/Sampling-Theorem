@@ -14,7 +14,8 @@ def createChirpSignal(samplingrate: int, duration: int, freqfrom: int, freqto: i
     else:
         # Calculate exponential chirp rate and apply given formula
         k = np.log(freqto / freqfrom) / duration
-        phase = 2 * np.pi * freqfrom / np.log(k) * (np.exp(k * t) - 1)
+        # phase = 2 * np.pi * freqfrom / np.log(k) * (k ** t - 1)
+        phase = 2 * np.pi * (freqfrom * duration / np.log(freqto / freqfrom) * (np.exp(k * t) - 1))
 
     # Return chirp signal
     return np.sin(phase)

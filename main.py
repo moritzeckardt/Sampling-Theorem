@@ -9,6 +9,6 @@ plt.plot(linear_chirp)
 plt.show()
 
 # Create exponential chirp signal
-exponential_chirp = createChirpSignal(200, 1, 1, 10, False)
+exponential_chirp = createChirpSignal(200, 1, 1, 20, False)
 plt.plot(exponential_chirp)
 plt.show()
