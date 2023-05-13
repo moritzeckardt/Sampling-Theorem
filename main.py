@@ -12,3 +12,12 @@ plt.show()
 exponential_chirp = createChirpSignal(200, 1, 1, 20, False)
 plt.plot(exponential_chirp)
 plt.show()
+
+#Create triangle signal
+triangle_signal = createTriangleSignal(200, 2, 10000)
+
+#Create square signal
+square_signal = createSquareSignal(200, 2, 10000)
+
+#Create sawtooth signal 
+sawtooth_signal = createSawtoothSignal(200, 2, 10000, amplitude=1)
