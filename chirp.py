@@ -1,7 +1,6 @@
 import numpy as np
 
 
-# returns the chirp signal as list or 1D-array
 def createChirpSignal(samplingrate: int, duration: int, freqfrom: int, freqto: int, linear: bool):
     # Create measurement time points over the entire duration
     t = np.linspace(0, duration, int(samplingrate * duration))
@@ -17,5 +16,5 @@ def createChirpSignal(samplingrate: int, duration: int, freqfrom: int, freqto: i
         # phase = 2 * np.pi * freqfrom / np.log(k) * (k ** t - 1) # Does not work
         phase = 2 * np.pi * (freqfrom * duration / np.log(freqto / freqfrom) * (np.exp(k * t) - 1))
 
-    # Return chirp signal
+    # Return chirp signal as 1D-array (np.ndarray)
     return np.sin(phase)

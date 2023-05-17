@@ -1,16 +1,12 @@
-from math import ceil
-import matplotlib.pyplot as plt
-import numpy as np
 import os
-from tqdm import tqdm
-from datetime import datetime
+import numpy as np
 
 
 def load_sample(filename, duration=4 * 44100, offset=44100 // 10):
-    # load file
+    # Load file
     signal = np.load(filename)
 
-    # position of the highest absolute value of the signal
+    # Position of the highest absolute value of the signal
     peak_position = np.argmax(np.abs(signal))
     start = peak_position + offset
     end = start + duration
@@ -18,13 +14,13 @@ def load_sample(filename, duration=4 * 44100, offset=44100 // 10):
 
 
 def compute_frequency(signal, min_freq=20):
-    # calculate fourier transform
+    # Calculate fourier transform
     fourier_transform = np.fft.fft(signal)
 
-    # frequencies smaller than min_freq to 0
+    # Frequencies smaller than min_freq to 0
     fourier_transform[np.abs(fourier_transform) < min_freq] = 0
 
-    # find the highest peak
+    # Find the highest peak
     max_magnitude_index = np.argmax(np.abs(fourier_transform))
 
     # Get the corresponding frequency from the index
@@ -43,4 +39,4 @@ if __name__ == '__main__':
         frequency = compute_frequency(sample)
         print(f'Audio Sample: {file}, Expected Frequency: {expected_frequency}Hz, Computed Frequency: {frequency}Hz')
 
-# https://en.wikipedia.org/wiki/Piano_key_frequencies
+# Link: https://en.wikipedia.org/wiki/Piano_key_frequencies
