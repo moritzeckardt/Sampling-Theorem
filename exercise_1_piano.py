@@ -42,5 +42,6 @@ if __name__ == '__main__':
         sample = load_sample(os.path.join(folder_path, file))
         frequency = compute_frequency(sample)
         print(f'Audio Sample: {file}, Expected Frequency: {expected_frequency}Hz, Computed Frequency: {frequency}Hz')
+        print('The mysterious note corresponds to A6.')
 
 # https://en.wikipedia.org/wiki/Piano_key_frequencies
